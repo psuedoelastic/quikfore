@@ -38,28 +38,28 @@ psexec -i -s powershell -ExecutionPolicy RemoteSigned -file c:\quikfore\quikfore
 Interpreting the output is fairly straight forward. The headers / footers of the output log file shows some timestamps and other useful information. Between those sections is the raw data for all matches based on your defined configurations, split into relevant sections. The output will appear as the following from a sample test data run:
 
 >**********************
->Windows PowerShell Transcript Start
->Start time: 20120517015146
->Username  : WORKGROUP\SYSTEM 
->Machine	  : XPS-WIN7 (Microsoft Windows NT 6.1.7601 Service Pack 1) 
->**********************
->Transcript started, output file is c:\quikfore\output\2012-05-17@01-51-46.output.log
->[PROCESSES]
->lsass.exe
->[SERVICES]
->lmhosts
->spooler
->[REGISTRY]
->HKLM\SYSTEM\CurrentControlSet\Services\EventLog\Application
->[FILES]
->C:\quikfore\test_data\test_file_md5sum.txt,0,d41d8cd98f00b204e9800998ecf8427e,
->C:\quikfore\test_data\test_file_name.txt,9,,
->C:\quikfore\test_data\test_file_size.txt,1,,
->C:\quikfore\test_data\test_file_string.txt,17,,foobarbaz
->C:\quikfore\test_data\subdir\test_file_string_subdir.txt,43,,rqcuser
->**********************
->Windows PowerShell Transcript End
->End time: 20120517015147
+>Windows PowerShell Transcript Start  
+>Start time: 20120517015146  
+>Username  : WORKGROUP\SYSTEM  
+>Machine	  : XPS-WIN7 (Microsoft Windows NT 6.1.7601 Service Pack 1)  
+>**********************  
+>Transcript started, output file is c:\quikfore\output\2012-05-17@01-51-46.output.log  
+>[PROCESSES]  
+>lsass.exe  
+>[SERVICES]  
+>lmhosts  
+>spooler  
+>[REGISTRY]  
+>HKLM\SYSTEM\CurrentControlSet\Services\EventLog\Application  
+>[FILES]  
+>C:\quikfore\test_data\test_file_md5sum.txt,0,d41d8cd98f00b204e9800998ecf8427e,  
+>C:\quikfore\test_data\test_file_name.txt,9,,  
+>C:\quikfore\test_data\test_file_size.txt,1,,  
+>C:\quikfore\test_data\test_file_string.txt,17,,foobarbaz  
+>C:\quikfore\test_data\subdir\test_file_string_subdir.txt,43,,rqcuser  
+>**********************  
+>Windows PowerShell Transcript End  
+>End time: 20120517015147  
 
 The [FILES] section output is comma-separated between the fields "file name", "file size", "md5sum", and "string match".
 
