@@ -4,11 +4,11 @@
 # Purpose: Extract useful forensic artifacts quickly from Windows machines
 #
 
-=Requirements=
+=Requirements=  
 * Windows with PowerShell (tested on version 2.0 under Windows 7)
 * SYSTEM privileges (psexec or other means)
 
-=Configuration=
+=Configuration=  
 This program takes literal strings as input from config files and attempts to scan hosts for forensic artifacts. Here is the layout below.
 
 Script Variables:
@@ -29,12 +29,12 @@ Folders / Files:
 * file_md5sums.cfg: Defines the list of md5sums to match files on disk.
 * file_strings.cfg: Defines the list of strings to search for in files on disk.
 
-=HowTo=
+=HowTo=  
 And here is how you might run it after copying the root directory to all necessary machines.
 
 psexec -i -s powershell -ExecutionPolicy RemoteSigned -file c:\quikfore\quikfore.ps1
 
-=Output=
+=Output=  
 Interpreting the output is fairly straight forward. The headers / footers of the output log file shows some timestamps and other useful information. Between those sections is the raw data for all matches based on your defined configurations, split into relevant sections. The output will appear as the following from a sample test data run:
 
 """
@@ -68,9 +68,9 @@ The [FILES] section output is comma-separated between the fields "file name", "f
 
 The only non-intuitive log lines may be the file entries that match, but seemingly have no md5sum or string data. This is because those entries matched on either file name or file size, so we do an early break in order to prevent having to md5sum a potentially large file (eg. if we found a 2GB rar file with the exact name we were searching anyway). Anything with an md5sum listed matched due to md5sum computation. Finally, anything with a string match will have matched on a defined literal string.
 
-=Notes=
+=Notes=  
 Testing on a home desktop machine, this script was able to process about ten gigabytes of data per hour for all the defined forensic parameters. You can drastically speed up your tests by only scanning the file system paths that are highly likely to be most interesting first. Then later on, you can schedule a scan for all drives. This would be my advice. Even if you only scan c:\windows\system32, you will still get all the process, services, and registry information quickly. Further, system32 is a prime target to locate malware quickly.
 
-=Known Issues=
+=Known Issues=  
 If your are encrypting files using the native Encrypting File System (EFS), then you may encounter cases where files cannot be read, even directly by the system user (this is because they are encrypted using key material only accessible to a logged on user).
 
